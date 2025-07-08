@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusionador de Archivos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="container" id="mainContainer">
+        <!-- Estado inicial: Solo input centrado -->
+        <div class="initial-state" id="initialState">
+            <div class="file-input-wrapper">
+                <label for="folderInput" class="folder-input-label">
+                    <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-5l-2-2H5a2 2 0 0 0-2 2z"/>
+                    </svg>
+                    <span>Seleccionar Carpeta</span>
+                </label>
+                <input type="file" id="folderInput" webkitdirectory directory multiple accept="*/*">
+            </div>
+        </div>
+
+        <!-- Estado con dos columnas -->
+        <div class="two-column-layout" id="twoColumnLayout" style="display: none;">
+            <!-- Columna izquierda (2/12) -->
+            <div class="left-column">
+                <div class="selected-folder-info">
+                    <div class="folder-icon-small">📁</div>
+                    <div class="folder-name" id="folderName">Carpeta seleccionada</div>
+                </div>
+                
+                <div class="change-folder-wrapper">
+                    <label for="changeFolderInput" class="change-folder-btn">
+                        Cambiar Carpeta
+                    </label>
+                    <input type="file" id="changeFolderInput" webkitdirectory directory multiple accept="*/*">
+                </div>
+                
+                <div class="app-info">
+                    <div class="version-info">
+                        <span class="version">v1.1.0</span>
+                        <span class="author">Por Miguel Rendón</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna derecha (10/12) -->
+            <div class="right-column">
+                <div class="format-selector-wrapper">
+                    <label for="formatSelector">Formato de exportación:</label>
+                    <select id="formatSelector">
+                        <option value="txt">TXT</option>
+                        <option value="js">JavaScript</option>
+                        <option value="sql">SQL</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="json">JSON</option>
+                        <option value="xml">XML</option>
+                        <option value="md">Markdown</option>
+                        <option value="py">Python</option>
+                        <option value="php">PHP</option>
+                    </select>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-button active" data-tab="documents" id="documentsTab">
+                            Documentos
+                        </button>
+                        <button class="tab-button" data-tab="order" id="orderTab">
+                            Reordenar
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <!-- Pestaña de Documentos -->
+                        <div class="tab-panel active" id="documentsPanel">
+                            <div class="files-container" id="filesContainer">
+                                <!-- Aquí se mostrarán los archivos -->
+                            </div>
+                        </div>
+                        
+                        <!-- Pestaña de Reordenamiento -->
+                        <div class="tab-panel" id="orderPanel">
+                            <div class="order-header">
+                                <h3>Orden de Archivos</h3>
+                                <span class="order-subtitle">Usa los botones ↑↓ para reordenar</span>
+                            </div>
+                            <div class="sortable-files" id="sortableFiles">
+                                <!-- Aquí se mostrarán las tarjetas ordenables -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-button-wrapper">
+                    <button id="exportButton" class="export-btn">
+                        <svg class="export-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Exportar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
