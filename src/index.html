@@ -8,6 +8,30 @@
 </head>
 <body style="user-select: none; -webkit-user-drag: none;"  ondragstart="return false;" onselectstart="return false;" oncontextmenu="return false;">
     
+    <!-- Barra de título personalizada -->
+    <div class="custom-titlebar">
+        <div class="titlebar-drag-region" data-tauri-drag-region>
+            <div class="titlebar-title">Fusionador de Archivos</div>
+        </div>
+        <div class="titlebar-controls">
+            <button id="titlebar-minimize" class="titlebar-btn minimize-btn" title="Minimizar">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <path d="M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <button id="titlebar-maximize" class="titlebar-btn maximize-btn" title="Maximizar">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="2" y="2" width="8" height="8" stroke="currentColor" stroke-width="1.5" fill="none" rx="1"/>
+                </svg>
+            </button>
+            <button id="titlebar-close" class="titlebar-btn close-btn" title="Cerrar">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <div class="container" id="mainContainer">
         <!-- Estado inicial: Solo input centrado -->
         <div class="initial-state" id="initialState">

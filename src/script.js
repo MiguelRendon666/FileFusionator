@@ -6,7 +6,40 @@ class FileFusionApp {
         this.init();
     }
 
+    initTitlebarControls() {
+        // Solo inicializar controles de titlebar si estamos en Tauri
+        if (window.__TAURI__) {
+            const { getCurrentWindow } = window.__TAURI__.window;
+            const appWindow = getCurrentWindow();
+
+            // Botón minimizar
+            const minimizeBtn = document.getElementById('titlebar-minimize');
+            if (minimizeBtn) {
+                minimizeBtn.addEventListener('click', () => appWindow.minimize());
+            }
+
+            // Botón maximizar/restaurar
+            const maximizeBtn = document.getElementById('titlebar-maximize');
+            if (maximizeBtn) {
+                maximizeBtn.addEventListener('click', () => appWindow.toggleMaximize());
+            }
+
+            // Botón cerrar
+            const closeBtn = document.getElementById('titlebar-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => appWindow.close());
+            }
+
+            // Doble click en la región de arrastre para maximizar/restaurar
+            const dragRegion = document.querySelector('.titlebar-drag-region');
+            if (dragRegion) {
+                dragRegion.addEventListener('dblclick', () => appWindow.toggleMaximize());
+            }
+        }
+    }
+
     init() {
+        this.initTitlebarControls();
         this.bindEvents();
         this.updateExportButton();
         
